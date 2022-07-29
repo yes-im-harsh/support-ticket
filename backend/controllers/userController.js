@@ -48,7 +48,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 //@desc Register a new user
-//@route /api/login
+//@route /api/users/login
 //@access Public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -70,6 +70,18 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc Get user
+//@route /api/users/me
+//@access Private
+const getMe = asyncHandler(async (req, res) => {
+  const user = {
+    id: req.user._id,
+    name: req.user.name,
+    email: req.user.email,
+  };
+  res.status(200).json(user);
+});
+
 //Generate Token
 
 const generateToken = (id) => {
@@ -81,4 +93,5 @@ const generateToken = (id) => {
 module.exports = {
   registerUser,
   loginUser,
+  getMe,
 };
