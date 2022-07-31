@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { register, reset } from "../features/auth/authSlice";
+import Spinner from "../components/Spinner";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -17,9 +18,8 @@ const Register = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams();
 
-  const { user, isError, isSuccess, message } = useSelector(
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
@@ -34,7 +34,7 @@ const Register = () => {
     }
 
     dispatch(reset());
-  }, [isError, isSuccess, message, user, dispatch, navigate, id]);
+  }, [isError, isSuccess, message, user, dispatch, navigate]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -58,6 +58,10 @@ const Register = () => {
       dispatch(register(userData));
     }
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <>
       <section className="heading">
