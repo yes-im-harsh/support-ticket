@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaSignInAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { register } from "../features/auth/authSlice";
+import { login } from "../features/auth/authSlice";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -35,7 +35,7 @@ const Login = () => {
       password,
     };
 
-    dispatch(register(userData));
+    dispatch(login(userData));
   };
   return (
     <>
