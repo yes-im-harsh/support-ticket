@@ -36,7 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (user) {
     res.status(201).json({
-      _id: user.id,
+      _id: user._id,
       name: user.name,
       email: user.email,
       token: generateToken(user._id),
@@ -47,7 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-//@desc Register a new user
+//@desc Login a new user
 //@route /api/users/login
 //@access Public
 const loginUser = asyncHandler(async (req, res) => {
@@ -59,7 +59,7 @@ const loginUser = asyncHandler(async (req, res) => {
   //check user and password match
   if (user && (await bcrypt.compare(password, user.password))) {
     res.status(201).json({
-      _id: user.id,
+      _id: user._id,
       name: user.name,
       email: user.email,
       token: generateToken(user._id),

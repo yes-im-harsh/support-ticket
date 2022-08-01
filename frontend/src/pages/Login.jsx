@@ -8,10 +8,8 @@ import Spinner from "../components/Spinner";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
-    password2: "",
   });
 
   const { email, password } = formData;
@@ -57,10 +55,13 @@ const Login = () => {
   if (isLoading) {
     return <Spinner />;
   }
+
   return (
     <>
       <section className="heading">
-        <h1>{<FaSignInAlt />} Login</h1>
+        <h1>
+          <FaSignInAlt /> Login
+        </h1>
         <p>Please login to get support</p>
       </section>
 
