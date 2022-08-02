@@ -162,6 +162,7 @@ h3 {
 }
 
 .btn-block {
+  display: inline-block;
   width: 100%;
   margin-bottom: 20px;
 }
