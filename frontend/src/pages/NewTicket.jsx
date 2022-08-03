@@ -10,10 +10,12 @@ const NewTicket = () => {
   const { user } = useSelector((state) => state.auth);
 
   const { isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.ticket
+    (state) => state.tickets
   );
 
+  // eslint-disable-next-line
   const [name, setName] = useState(user.name);
+  // eslint-disable-next-line
   const [email, setEmail] = useState(user.email);
   const [product, setProduct] = useState("iPhone");
   const [description, setDescription] = useState("");
@@ -71,7 +73,7 @@ const NewTicket = () => {
               onChange={(e) => setProduct(e.target.value)}
             >
               <option value="iPhone">iPhone</option>
-              <option value="MacBook Pro">MacBook Pro</option>
+              <option value="Macbook Pro">Macbook Pro</option>
               <option value="iMac">iMac</option>
               <option value="iPad">iPad</option>
             </select>
